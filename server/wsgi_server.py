@@ -7,6 +7,8 @@ from logging import handlers
 import psutil
 from borisplus.utils.cmd import get_command_line_options_and_args
 
+dispatcher_file = '/home/developer/PycharmProjects/otus_webpython_003/wsgi_app_example/dispatcher.py'
+
 if __name__ == '__main__':
 
     file_name = os.path.basename(__file__).split('.')[0]
@@ -14,7 +16,7 @@ if __name__ == '__main__':
 
     rootLogger = logging.getLogger('%s' % file_name)
     rootLogger.setLevel(logging.INFO)
-    logFormatter = logging.Formatter("[%(asctime)s] %(filename)-15s %(levelname)-8s %(message)s")
+    logFormatter = logging.Formatter("[%(asctime)s] [%(name)s] %(levelname)-8s %(filename) %(message)s")
 
     fileHandler = handlers.TimedRotatingFileHandler(
         os.path.join(dir_name, 'logs', '%s.log' % file_name),
@@ -35,17 +37,18 @@ if __name__ == '__main__':
     options_and_args = get_command_line_options_and_args(
         sys.argv[1:],
         [
-            {'option_name': 'action', 'option_value_comment': '<action:{run,stop,status}>'},
-            {'option_name': 'http_server_host', 'option_value_comment': '<host:{ip_address,dns_name}>'},
-            {'option_name': 'http_server_port', 'option_value_comment': '<port:{uint_number}>'},
-            {'option_name': 'dispatcher_file', 'option_value_comment': '<full_dispatcher_file_path>'},
+            {'option_name': 'action', 'option_value_comment': '<action:{run,stop,status}>',
+             'default_value': 'status'},
+            {'option_name': 'http_server_host', 'option_value_comment': '<host:{ip_address,dns_name}>',
+             'default_value': '127.0.0.1:9090'},
+            {'option_name': 'http_server_port', 'option_value_comment': '<port:{uint_number}>',
+             'default_value': '8432'},
+            {'option_name': 'dispatcher_file', 'option_value_comment': '<full_dispatcher_file_path>',
+             'default_value': '/home/developer/PycharmProjects/otus_webpython_003/wsgi_app_example/dispatcher.py' },
         ]
     )
-    action = options_and_args.get('cmd_options').get('--action', 'default')
-    dispatcher_file = options_and_args.get('cmd_options').get(
-        '--dispatcher_file',
-        '/home/developer/PycharmProjects/otus_webpython_003/wsgi_app_example/dispatcher.py'
-    )
+    action = options_and_args.get('cmd_options').get('--action')
+    dispatcher_file = options_and_args.get('cmd_options').get('--dispatcher_file')
     http_server_port = options_and_args.get('cmd_options').get(
         '--http_server_port',
         9090
