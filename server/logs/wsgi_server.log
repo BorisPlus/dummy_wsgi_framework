@@ -1,0 +1,7 @@
+[2018-08-09 21:28:07,768] wsgi_server.py  INFO     LETS RUN ACTION: status WITH ARGS: []
+[2018-08-09 21:28:07,803] wsgi_server.py  INFO     uwsgi IS NOT RUN
+[2018-08-09 21:28:25,483] wsgi_server.py  INFO     LETS RUN ACTION: stop WITH ARGS: []
+[2018-08-09 21:28:25,507] wsgi_server.py  INFO     uwsgi IS NOT RUN
+[2018-08-09 21:28:25,731] wsgi_server.py  INFO     LETS RUN ACTION: stop WITH ARGS: []
+[2018-08-09 21:28:25,767] wsgi_server.py  INFO     uwsgi IS NOT RUN
+[2018-08-09 21:28:39,064] wsgi_server.py  INFO     LETS RUN ACTION: run WITH ARGS: []
