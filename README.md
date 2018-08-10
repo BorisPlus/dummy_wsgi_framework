@@ -77,6 +77,7 @@ uwsgi --http 127.0.0.1:9090 --wsgi-file /<absolute_path>/dummy_wsgi_framework/ap
 ## Дополнительные сведения
 
 Проект в рамках трехдневного домашнего задания курса "Web-разработчик на Python" на https://otus.ru/learning
+
 Прошу понять и простить.
 
 Но Вам не кажется, что **Dummy WSGI Framework** не так уж и "глуп"?
