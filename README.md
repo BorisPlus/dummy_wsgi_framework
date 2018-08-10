@@ -17,11 +17,11 @@
 ### Примеры
 
 Примеры реализованных приложений:
-* [APP](https://github.com/BorisPlus/otus_webpython_003/tree/master/dummy_wsgi_framework/app)
-* [APP_001](https://github.com/BorisPlus/otus_webpython_003/tree/master/dummy_wsgi_framework/app_001)
+* [APP - dummy_wsgi_framework/app](https://github.com/BorisPlus/otus_webpython_003/tree/master/dummy_wsgi_framework/app)
+* [APP_001 - dummy_wsgi_framework/app_001](https://github.com/BorisPlus/otus_webpython_003/tree/master/dummy_wsgi_framework/app_001)
 
 
-#### Пример [APP](https://github.com/BorisPlus/otus_webpython_003/tree/master/dummy_wsgi_framework/app)
+#### Пример [APP - dummy_wsgi_framework/app](https://github.com/BorisPlus/otus_webpython_003/tree/master/dummy_wsgi_framework/app)
 
 Содержит демонстрационный вариант реализации Веб-приложения.
 А именно:
@@ -34,11 +34,11 @@
 
 #### Руководство разработчика
 
-1. Скопируйте папку app.template, переименовав ее, например, в app_002
+1. Скопируйте папку **_app.template_**, переименовав ее, например, в **_app_002_**
 2. Приведите в соответствие маршруты до контроллелов в файле routes.py 
 3. Создайте эти контроллеры, реализовав их логику работы (можно взять шаблонные 
 с подгрузкой html и без, или реализовать свои, например, с посылкой 
-специальных HTTP-заголовков для Basic Access Authentication). Внимательно следите за тем,
+специальных HTTP-заголовков для _Basic Access Authentication_). Внимательно следите за тем,
 какие части каких приложений вы импортируете.
 
 ```python
