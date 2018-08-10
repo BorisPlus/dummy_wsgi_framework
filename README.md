@@ -66,9 +66,9 @@ uwsgi --http 127.0.0.1:9090 --wsgi-file /<absolute_path>/dummy_wsgi_framework/ap
 
 **Cхематично:** 
 
-app_002/app_dispatcher.py -> [call] ->  
+**_START_** -> app_002/app_dispatcher.py -> [call] ->  
  -> app_002/controllers/uri_controller.controller_response -> [load] ->  
-  -> app_002/views/uri_controller_view 
+  -> app_002/views/uri_controller_view -> **_END_**
         
 ## Лицензия
 
