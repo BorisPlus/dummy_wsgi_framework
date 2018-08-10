@@ -64,6 +64,12 @@ uwsgi --http 127.0.0.1:9090 --wsgi-file /<absolute_path>/dummy_wsgi_framework/ap
 соответствующий данному uri контроллер, который в свою очередь может использовать статическое представление.
 Вариант реализации подгрузки представления контроллелом реализован в методе render_view_or_404 ядра фреймворка. 
 
+**Cхематично:** 
+
+app_002/app_dispatcher.py -> [call] ->
+    -> app_002/controllers/uri_controller.controller_response -> [load] -> 
+        -> app_002/views/uri_controller_view 
+        
 ## Лицензия
 
 Распространяется свободно.
