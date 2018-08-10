@@ -5,9 +5,12 @@ import subprocess
 import sys
 from logging import handlers
 import psutil
-from borisplus.utils.cmd import get_command_line_options_and_args
 
-dispatcher_file = '/home/developer/PycharmProjects/otus_webpython_003/wsgi_app_example/dispatcher.py'
+module_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if module_path not in sys.path:
+    sys.path.append(module_path)
+from run_project_tasks.borisplus.utils.cmd import get_command_line_options_and_args
+
 
 if __name__ == '__main__':
 
@@ -16,7 +19,7 @@ if __name__ == '__main__':
 
     rootLogger = logging.getLogger('%s' % file_name)
     rootLogger.setLevel(logging.INFO)
-    logFormatter = logging.Formatter("[%(asctime)s] [%(name)s] %(levelname)-8s %(filename) %(message)s")
+    logFormatter = logging.Formatter("[%(asctime)s] [%(name)s] %(levelname)-8s %(filename)s %(message)s")
 
     fileHandler = handlers.TimedRotatingFileHandler(
         os.path.join(dir_name, 'logs', '%s.log' % file_name),
@@ -40,33 +43,29 @@ if __name__ == '__main__':
             {'option_name': 'action', 'option_value_comment': '<action:{run,stop,status}>',
              'default_value': 'status'},
             {'option_name': 'http_server_host', 'option_value_comment': '<host:{ip_address,dns_name}>',
-             'default_value': '127.0.0.1:9090'},
+             'default_value': '127.0.0.1'},
             {'option_name': 'http_server_port', 'option_value_comment': '<port:{uint_number}>',
              'default_value': '8432'},
             {'option_name': 'dispatcher_file', 'option_value_comment': '<full_dispatcher_file_path>',
-             'default_value': '/home/developer/PycharmProjects/otus_webpython_003/wsgi_app_example/dispatcher.py' },
+             'default_value': '/home/developer/PycharmProjects/otus_webpython_003/'
+                              'dummy_wsgi_framework/app/app_dispatcher.py'},
         ]
     )
     action = options_and_args.get('cmd_options').get('--action')
     dispatcher_file = options_and_args.get('cmd_options').get('--dispatcher_file')
-    http_server_port = options_and_args.get('cmd_options').get(
-        '--http_server_port',
-        9090
-    )
-    http_server_host = options_and_args.get('cmd_options').get(
-        '--http_server_host',
-        '127.0.0.1'
-    )
+    http_server_port = options_and_args.get('cmd_options').get('--http_server_port')
+    http_server_host = options_and_args.get('cmd_options').get('--http_server_host')
     rootLogger.info('LETS RUN ACTION: %s WITH ARGS: %s' % (
         action,
         options_and_args.get('cmd_args'),
     ))
 
-    if action == 'run':
+    if action == 'start':
         messages = []
         for pid in psutil.pids():
             p = psutil.Process(pid)
-            if len(p.cmdline()) > 1 and 'uwsgi' in p.cmdline() and '--http' in p.cmdline() and os.getpid() != pid:
+            if len(p.cmdline()) > 1 and 'uwsgi' in p.cmdline() \
+                    and dispatcher_file in p.cmdline() and '--http' in p.cmdline() and os.getpid() != pid:
                 message = 'WORK WITH PID:"{}" RUN AS:"{}"'.format(
                     pid,
                     ' '.join(['%s' % cmd_p for cmd_p in p.cmdline()])
@@ -79,14 +78,12 @@ if __name__ == '__main__':
                 '--http', '%s:%s' % (http_server_host, http_server_port),
                 '--wsgi-file', '%s' % dispatcher_file,
             ]
-            print(' '.join(command))
+            rootLogger.info(' '.join(command))
             subprocess.call(command)
-            # subprocess.Popen(command, stdout=subprocess.PIPE)
-            # subprocess.Popen(command)
 
         else:
             for message in messages:
-                rootLogger.info(message)
+                rootLogger.warning(message)
 
     elif action == 'stop':
 
@@ -118,7 +115,7 @@ if __name__ == '__main__':
             rootLogger.info(message)
         else:
             for message in messages:
-                rootLogger.info(message)
+                rootLogger.info('%s' % message)
 
     else:
 
