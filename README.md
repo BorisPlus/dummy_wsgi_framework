@@ -97,11 +97,11 @@
     соответствующий данному uri контроллер, который в свою очередь может использовать статическое представление.
     Вариант реализации подгрузки представления контроллелом реализован в методе render_view_or_404 ядра фреймворка. 
 
-**Если схематично**. 
+**Если схематично.** 
 
 **_START_** -> app_002/app_dispatcher.py -> [call] ->  
  -> app_002/controllers/uri_controller.controller_response -> [load] ->  
-  -> app_002/views/uri_controller_view -> **_END_**
+ -> app_002/views/uri_controller_view -> **_END_**
         
 ## Лицензия
 
