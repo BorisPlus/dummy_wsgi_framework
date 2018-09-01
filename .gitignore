@@ -1,5 +1,5 @@
 # My gitignore
-__gitignore*
+gitignore/
 
 # PyCharm
-.idea
+.idea/
