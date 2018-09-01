@@ -50,7 +50,7 @@ uwsgi --http 127.0.0.1:9091 --wsgi-file /<absolute_path>/examples_usage/app_feat
      
     Файл **_config.py_** содержит конфигурационные переменные, и предпочтительно без должного опыта не изменять существующие (но это возможно, см. конфигурацию примера ['Демонстрация с переопределением путей хранения файлов контроллеров и представлений'](https://github.com/BorisPlus/otus_webpython_003/blob/master/examples_usage/app_test_other_dirs/config.py)) и добавлять свои конфигурационные переменные именно сюда.
     
-Приведите в соответствие маршруты до контроллелов в файле **_routes.py_**, изменив словарь
+Приведите в соответствие маршруты до контроллелов в файле **_routes.py_**, изменив словарь:
 ```python
     uri_routes = {
         ...
@@ -58,7 +58,7 @@ uwsgi --http 127.0.0.1:9091 --wsgi-file /<absolute_path>/examples_usage/app_feat
         ...
     }
 ```
-или переопределив базовые маршруты фреймворка
+или, переопределив базовые маршруты фреймворка:
 ```python
 from dummy_wsgi_framework.core.routes import base_uri_routes
 
