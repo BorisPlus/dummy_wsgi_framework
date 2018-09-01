@@ -46,13 +46,12 @@ if __name__ == '__main__':
              'default_value': '127.0.0.1'},
             {'option_name': 'http_server_port', 'option_value_comment': '<port:{uint_number}>',
              'default_value': '8432'},
-            {'option_name': 'dispatcher_file', 'option_value_comment': '<full_dispatcher_file_path>',
-             'default_value': '/home/developer/PycharmProjects/otus_webpython_003/'
-                              'dummy_wsgi_framework/app/app_dispatcher.py'},
+            {'option_name': 'application', 'option_value_comment': '<full_application_file_path>',
+             'default_value': './application.py'},
         ]
     )
     action = options_and_args.get('cmd_options').get('--action')
-    dispatcher_file = options_and_args.get('cmd_options').get('--dispatcher_file')
+    application = options_and_args.get('cmd_options').get('--application')
     http_server_port = options_and_args.get('cmd_options').get('--http_server_port')
     http_server_host = options_and_args.get('cmd_options').get('--http_server_host')
     rootLogger.info('LETS RUN ACTION: %s WITH ARGS: %s' % (
@@ -65,7 +64,7 @@ if __name__ == '__main__':
         for pid in psutil.pids():
             p = psutil.Process(pid)
             if len(p.cmdline()) > 1 and 'uwsgi' in p.cmdline() \
-                    and dispatcher_file in p.cmdline() and '--http' in p.cmdline() and os.getpid() != pid:
+                    and application in p.cmdline() and '--http' in p.cmdline() and os.getpid() != pid:
                 message = 'WORK WITH PID:"{}" RUN AS:"{}"'.format(
                     pid,
                     ' '.join(['%s' % cmd_p for cmd_p in p.cmdline()])
@@ -76,7 +75,7 @@ if __name__ == '__main__':
             command = [
                 'uwsgi',
                 '--http', '%s:%s' % (http_server_host, http_server_port),
-                '--wsgi-file', '%s' % dispatcher_file,
+                '--wsgi-file', '%s' % application,
             ]
             rootLogger.info(' '.join(command))
             subprocess.call(command)
