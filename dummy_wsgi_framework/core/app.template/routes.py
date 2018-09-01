@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-uri_routes = {
+path_info_routes = {
     '/index': 'index.py',
     '': 'index.py',
 }
