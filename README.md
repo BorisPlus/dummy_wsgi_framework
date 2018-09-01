@@ -119,13 +119,14 @@ uwsgi --http 127.0.0.1:9093 --wsgi-file /<absolute_path>/app/application.py
 ```
 Таким образом у Вас есть возможность создать несколько приложений, запуская их на разных портах серверов. 
     
-Диспетчер вашего приложения (_**app/application.py:** def application()..._), передаст полученные аргументы запроса диспетчеру контроллеров ядра фреймворка (_**core/dispatchers.py:** def controllers_dispatcher()..._) вместе с отсылкой на конфигурационные данные вашего приложения, тот в соответствии с переданным ему PATH_INFO по имеющимя данным в маршрутах вашего приложения (_**app/routes.py:** path_info_routes_) вызовет соответствующий данному маршруту контроллер (**_core/routes.py:** def get_controller_by_path_info()..._), который в свою очередь ответит "представлением" по "зашитому" в него функционалу или передаст полученные им параметры диспетчеру представлений ядра фреймворка (**_core/dispatchers.py:** def views_dispatcher()..._), который "загрузит" статический HTML-файл вашего представления (_app/views/controller_view.html_).
+Точка входа вашего приложения (_**app/application.py:** def application()..._), передаст полученные аргументы запроса диспетчеру контроллеров ядра фреймворка (_**core/dispatchers.py:** def controllers_dispatcher()..._) вместе с отсылкой на конфигурационные данные вашего приложения, тот в соответствии с переданным ему PATH_INFO по имеющимя данным в маршрутах вашего приложения (_**app/routes.py:** path_info_routes_) вызовет (**_core/routes.py:** def get_controller_by_path_info()..._) соответствующий данному маршруту контроллер (_**app/controllers/action.py:** def controller_response()), который в свою очередь ответит "представлением" по "зашитому" в него функционалу или передаст полученные им параметры диспетчеру представлений ядра фреймворка (**_core/dispatchers.py:** def views_dispatcher()..._), который "загрузит" статический HTML-файл вашего представления (_app/views/action.html_).
     
 **Схематично.** 
 
 **_START_** -> **app**/application.py -> [call] ->  
  -> dummy_wsgi_framework/**core**/controllers_dispatcher -> [get controller by path_info in app/routes] ->  
- -> **app**/controllers/path_info_controller.controller_response -> [optional call] ->  
+ -> **app**/controllers/action.py -> [call] ->  
+ -> **app**/controllers/action.py: def controller_response() -> [optional call] ->  
  -> dummy_wsgi_framework/**core**/views_dispatcher -> [load] ->  
  -> **app**/views/path_info_controller_view -> **_END_**
    
