@@ -1,5 +1,5 @@
 # My gitignore
 __gitignore*
 
-#PyCharm
+# PyCharm
 .idea
