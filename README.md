@@ -109,15 +109,15 @@ uwsgi --http 127.0.0.1:9093 --wsgi-file /<absolute_path>/app/application.py
 ```
 Таким образом у Вас есть возможность создать несколько приложений, запуская их на разных портах серверов. 
     
-Диспетчер вашего приложения (_app/application.py: def application()..._), передаст полученные аргументы запроса диспетчеру контроллеров ядра фреймворка (_core/dispatchers.py: def controllers_dispatcher()..._) вместе с отсылкой на конфигурационные данные вашего приложения, тот в соответствии с переданным ему uri по имеющимя данным в маршрутах вашего приложения (_app/routes.py: uri_routes_) вызовет соответствующий (по uri) данному маршруту контроллер (_core/routes.py: def get_controller_by_uri()..._), который в свою очередь ответить "представлением" по "зашитому" в него функционалу или передаст полученные им параметры контроллеру представлений ядра фреймворка (_core/dispatchers.py: def views_dispatcher()..._), который "загрузит" статический HTML-файл вашего представления (_app/views/controller_view.html_).
+Диспетчер вашего приложения (_**app/application.py:** def application()..._), передаст полученные аргументы запроса диспетчеру контроллеров ядра фреймворка (_**core/dispatchers.py:** def controllers_dispatcher()..._) вместе с отсылкой на конфигурационные данные вашего приложения, тот в соответствии с переданным ему URI по имеющимя данным в маршрутах вашего приложения (_**app/routes.py:** uri_routes_) вызовет соответствующий данному маршруту контроллер (**_core/routes.py:** def get_controller_by_uri()..._), который в свою очередь ответить "представлением" по "зашитому" в него функционалу или передаст полученные им параметры контроллеру представлений ядра фреймворка (**_core/dispatchers.py:** def views_dispatcher()..._), который "загрузит" статический HTML-файл вашего представления (_app/views/controller_view.html_).
     
 **Схематично.** 
 
-**_START_** -> app/application.py -> [call] ->  
- -> dummy_wsgi_framework/controllers_dispatcher -> [get controller by uri in app/routes] ->  
- -> app/controllers/uri_controller.controller_response -> [optional call] ->  
- -> app/views_dispatcher -> [load] ->  
- -> app/views/uri_controller_view -> **_END_**
+**_START_** -> **app**/application.py -> [call] ->  
+ -> dummy_wsgi_framework/**core**/controllers_dispatcher -> [get controller by uri in app/routes] ->  
+ -> **app**/controllers/uri_controller.controller_response -> [optional call] ->  
+ -> dummy_wsgi_framework/**core**/views_dispatcher -> [load] ->  
+ -> **app**/views/uri_controller_view -> **_END_**
         
 ## Лицензия
 
