@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-def controller_response(environ, start_response):
+def controller_response(environ, start_response, app_config):
+    if environ:
+        pass  # Lets ignore PyCharm warning about not usage
+    if app_config:
+        pass  # Lets ignore PyCharm warning about not usage
     start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
     return [
         bytes(
@@ -15,7 +19,7 @@ def controller_response(environ, start_response):
             "    <li>лишние комментарии.</li>"
             "</ul>"
             "<br>"
-            "<a href='/'>go to start page</a>"
+            "<a href='/'>Перейти на стартовую страницу.</a>"
             , 'utf-8'
         )
     ]
