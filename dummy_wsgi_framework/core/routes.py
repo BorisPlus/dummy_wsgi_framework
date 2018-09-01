@@ -14,9 +14,10 @@ base_uri_routes = {
 
 def get_controller_by_uri(request_uri, app_config):
     try:
-        if app_config.APP_ROOT_DIR not in sys.path:
-            sys.path.insert(0, app_config.APP_ROOT_DIR)
         if os.path.exists(os.path.join(app_config.APP_ROOT_DIR, 'routes.py')):
+            # sys.path.insert(0, app_config.APP_ROOT_DIR)
+            if app_config.APP_ROOT_DIR not in sys.path:
+                sys.path.insert(0, app_config.APP_ROOT_DIR)
             routes_module = __import__("routes")
             uri_routes = routes_module.uri_routes
         else:
