@@ -7,7 +7,11 @@ if dummy_wsgi_framework_module_path not in sys.path:
     sys.path.append(dummy_wsgi_framework_module_path)
 
 from dummy_wsgi_framework.core.dispatchers import controllers_dispatcher
-from <path of app> import config as app_config
+
+# UNCOMMENT THIS
+# from path_of_app import config as app_config
+if 0:
+    app_config = None  # Ignore PyCharm warning
 
 
 def application(environ, start_response):
