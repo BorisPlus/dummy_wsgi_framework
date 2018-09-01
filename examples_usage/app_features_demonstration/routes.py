@@ -6,10 +6,10 @@ dummy_wsgi_framework_module_path = os.path.dirname(os.path.dirname(os.path.dirna
 if dummy_wsgi_framework_module_path not in sys.path:
     sys.path.append(dummy_wsgi_framework_module_path)
 
-from dummy_wsgi_framework.core.routes import base_uri_routes
+from dummy_wsgi_framework.core.routes import base_path_info_routes
 
-uri_routes = base_uri_routes.copy()
-uri_routes.update(
+path_info_routes = base_path_info_routes.copy()
+path_info_routes.update(
     **{
         '/homework_rebuke': 'homework_rebuke.py',
         '/string_methods': 'string_methods.py',

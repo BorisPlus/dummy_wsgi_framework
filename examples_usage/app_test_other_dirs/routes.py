@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-from dummy_wsgi_framework.core.routes import base_uri_routes
+from dummy_wsgi_framework.core.routes import base_path_info_routes
 
-uri_routes = base_uri_routes.copy()
-uri_routes.update(
+path_info_routes = base_path_info_routes.copy()
+path_info_routes.update(
     **{
         '/homework_rebuke': 'homework_rebuke.py',
         '/string_functions': 'string_functions.py',

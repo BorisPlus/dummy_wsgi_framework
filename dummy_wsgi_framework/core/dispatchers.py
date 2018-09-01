@@ -6,7 +6,7 @@ import sys
 # dummy_wsgi_framework_module_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # if dummy_wsgi_framework_module_path not in sys.path:
 #     sys.path.append(dummy_wsgi_framework_module_path)
-from dummy_wsgi_framework.core.routes import get_controller_by_uri
+from dummy_wsgi_framework.core.routes import get_controller_by_path_info
 from dummy_wsgi_framework.core.exceptions import (
     ControllerFileDoesNotExists,
     RouteDoesNotExists,
@@ -23,9 +23,9 @@ def __resolve_name_by_python_file_name(file_name):
 
 
 def controllers_dispatcher(environ, start_response, app_config):
-    uri = environ.get('REQUEST_URI')
+    path_info = environ.get('PATH_INFO')
     try:
-        controller_file = get_controller_by_uri(uri, app_config)
+        controller_file = get_controller_by_path_info(path_info, app_config)
         if app_config.APP_CONTROLLERS_DIR not in sys.path:
             sys.path.insert(0, app_config.APP_CONTROLLERS_DIR)
         controller_module = __import__(
@@ -36,15 +36,15 @@ def controllers_dispatcher(environ, start_response, app_config):
     except RouteDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message='Маршрут для URI "%s" в приложении "%s" не существует.' % (
-                uri, app_config.APP_NAME
+            message='Маршрут для PATH_INFO "%s" в приложении "%s" не существует.' % (
+                path_info, app_config.APP_NAME
             )
         )
     except ControllerFileDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message='Файл объявленного в маршрутах контроллера с URI "%s" приложения "%s" не сущетсвует.' % (
-                uri, app_config.APP_NAME
+            message='Файл объявленного в маршрутах контроллера с PATH_INFO "%s" приложения "%s" не сущетсвует.' % (
+                path_info, app_config.APP_NAME
             )
         )
     except ViewDoesNotExists:
