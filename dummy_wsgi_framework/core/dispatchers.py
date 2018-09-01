@@ -15,19 +15,11 @@ from dummy_wsgi_framework.core.exceptions import (
 )
 from dummy_wsgi_framework.core.controllers import error404
 
-# if 0:
-#     app_config = object()
-#     app_config.APP_ROOT_DIR = None
-#     app_config.APP_ROOT_DIR_NAME = None
-#     app_config.APP_NAME = None
-#     app_config.APP_VIEWS_DIR = None
-#     app_config.APP_CONTROLLERS_DIR = None
-
 
 def __resolve_name_by_python_file_name(file_name):
     if file_name.endswith('.py'):
         return file_name[:-3]
-    raise BadTermUsage('Неудачная попытка преобразования имени файлa "%s" в модуль.' % file_name)
+    raise BadTermUsage('Невозможно установить имя модуля по файлу "%s".' % file_name)
 
 
 def controllers_dispatcher(environ, start_response, app_config):
@@ -44,14 +36,14 @@ def controllers_dispatcher(environ, start_response, app_config):
     except RouteDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message='Маршрут для URI "%s" в приложении "%s" не существует' % (
+            message='Маршрут для URI "%s" в приложении "%s" не существует.' % (
                 uri, app_config.APP_NAME
             )
         )
     except ControllerFileDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message='Файл объявленного в маршрутах контроллер "%s" приложения "%s" не сущетсвует' % (
+            message='Файл объявленного в маршрутах контроллера с URI "%s" приложения "%s" не сущетсвует.' % (
                 uri, app_config.APP_NAME
             )
         )
