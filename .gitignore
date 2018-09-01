@@ -1,2 +1,3 @@
 # My gitignore
-__gitignore*/
+__gitignore*
+.idea
