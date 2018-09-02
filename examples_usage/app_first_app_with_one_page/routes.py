@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 path_info_routes = {
-    '/index': 'index.py',
-    '': 'index.py',
+    '/index/': 'index.py',
+    '/': 'index.py',
 }

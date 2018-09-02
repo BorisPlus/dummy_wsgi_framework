@@ -13,7 +13,7 @@ from dummy_wsgi_framework.core.exceptions import (
     ViewDoesNotExists,
     BadTermUsage
 )
-from dummy_wsgi_framework.core.controllers import error404
+from dummy_wsgi_framework.core.controllers import error404, redirect
 
 
 def __resolve_name_by_python_file_name(file_name):
@@ -24,6 +24,8 @@ def __resolve_name_by_python_file_name(file_name):
 
 def controllers_dispatcher(environ, start_response, app_config):
     path_info = environ.get('PATH_INFO')
+    if not path_info.endswith('/'):
+        return redirect.controller_response(environ, start_response, app_config, path_info+'/')
     try:
         controller_file = get_controller_by_path_info(path_info, app_config)
         if app_config.APP_CONTROLLERS_DIR not in sys.path:
