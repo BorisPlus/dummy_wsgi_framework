@@ -80,7 +80,7 @@ def views_dispatcher(environ, start_response, app_config, controller_file):
         raise ViewDoesNotExists(
             "Отсутствует HTML-файл представления '%s' "
             "в папке '%s' <br>" % (
-                view_path,
-                view_file_name
+                view_file_name,
+                app_config.APP_VIEWS_DIR
             )
         )
