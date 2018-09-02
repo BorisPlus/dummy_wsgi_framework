@@ -134,8 +134,11 @@ def controller_response(environ, start_response, app_config):
         start_response,
         app_config,     # по сути указываем диспетчеру 
                         #  фреймворка какое из ваших приложений использовать
-        __file__        # на это имя опирается диспетчер представлений, 
-                        # он отсечет .py от имени файла и будет искать имя с ".html"
+        'view.html'     # на это имя опирается диспетчер представлений, 
+                        # для простоты рефакторинга я в качестве данного параметра использую вызов
+                        # from dummy_wsgi_framework.core.dispatchers import resolve_name_by_python_file_name
+                        # resolve_name_by_python_file_name(__file__, '%s.html')
+                        # что обяжет файл представления иметь тоже имя, что и файла контроллера                    
     )
 ```
 
