@@ -38,7 +38,7 @@
 ```python
     path_info_routes = {
         ...
-        '/page_by_url': 'page_by_url.py',
+        '/page_by_url/': 'page_by_url.py',
         ...
     }
 ```
@@ -49,17 +49,44 @@ from dummy_wsgi_framework.core.routes import base_path_info_routes
 path_info_routes = base_path_info_routes.copy()
 path_info_routes.update(
     **{
-        '/homework_rebuke': 'homework_rebuke.py',
-        '/string_methods': 'string_methods.py',
-        '/controller_file_does_not_exists': 'controller_file_does_not_exists.py',
-        '/controller_with_missing_view_file': 'controller_with_missing_view_file.py',
+        '/homework_rebuke/': 'homework_rebuke.py',
+        '/string_methods/': 'string_methods.py',
+        '/controller_file_does_not_exists/': 'controller_file_does_not_exists.py',
+        '/controller_with_missing_view_file/': 'controller_with_missing_view_file.py',
     }
 )
 ```
 , где:
-* ключ словаря _'/page_by_url'_ - это PATH_INFO, последующая после доменного имени или ip адреса часть URL
-* а значение _'page_by_url.py'_ - это Python-файл контроллера, реализующего логику реакции на переход по соответствующей (указаной в ключе) ссылке.
-Python-файл контроллера необходимо разместить в подпапке controllers.
+* ключ словаря _'/page_by_url/'_ - это PATH_INFO, последующая после доменного имени или ip адреса часть URL ("/" в конце обязателен), так как вызов диспетчера контролирует двойственность ссылок ".../page_by_url" и ".../page_by_url/", и если "/" нет, то делается дополнение им и происходит вызов соответствующего редиректа.
+* а значение _'page_by_url.py'_ - это Python-файл контроллера, реализующего логику реакции на переход по соответствующей (указаной в ключе) ссылке. Python-файл контроллера необходимо разместить в подпапке controllers (но возможно переопределить).
+
+Функции редиректа и ошибки 404 реализованы в ядре фреймворка:
+```python
+# File: core/controllers/redirect.py
+def controller_response(environ, start_response, app_config, location):
+    start_response('301 Moved Permanently', [('Location', location)])
+    return b''
+```
+и
+
+```python
+# File: core/controllers/error404.py
+def controller_response(environ, start_response, app_config, message):
+    start_response('404 Not found', [('Content-Type', 'text/html; charset=utf-8')])
+    return [
+        bytes(
+            (
+                'Ошибка в приложении "%s"<br>'
+                '%s<br>'
+                '<a href="/">Перейти на стартовую страницу.</a>'
+            ) % (
+                app_config.APP_NAME,
+                message,
+            )
+            , 'utf-8'
+        )
+    ]
+```
 
 За перенаправление http-запросов к контроллерам в соответствии с маршрутами из **_routes.py_** отвечает диспетчер вашего приложения **_application.py_** (файл называть именно так необязательно). Его и нужно будет запускать в качестве основной входной точки вашего WSGI-приложения.
 
