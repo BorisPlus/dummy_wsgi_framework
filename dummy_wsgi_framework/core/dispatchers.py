@@ -38,26 +38,27 @@ def controllers_dispatcher(environ, start_response, app_config):
     except RouteDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message='Маршрут для PATH_INFO "%s" в приложении "%s" не существует.' % (
+            message='<b>RouteDoesNotExists:</b> Маршрут для PATH_INFO "%s" в приложении "%s" не существует.' % (
                 path_info, app_config.APP_NAME
             )
         )
     except ControllerFileDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message='Файл объявленного в маршрутах контроллера с PATH_INFO "%s" приложения "%s" не сущетсвует.' % (
+            message='<b>ControllerFileDoesNotExists:</b> Файл объявленного в маршрутах контроллера с PATH_INFO '
+                    '"%s" приложения "%s" не сущетсвует.' % (
                 path_info, app_config.APP_NAME
             )
         )
     except ViewDoesNotExists:
         return error404.controller_response(
             environ, start_response, app_config,
-            message=sys.exc_info()[1]
+            message='<b>ViewDoesNotExists:</b> %s' % sys.exc_info()[1]
         )
     except BadTermUsage:
         return error404.controller_response(
             environ, start_response, app_config,
-            message=sys.exc_info()[1]
+            message='<b>BadTermUsage:</b> %s' % sys.exc_info()[1]
         )
 
 
