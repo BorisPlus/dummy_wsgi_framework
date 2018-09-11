@@ -1,12 +1,20 @@
-class ControllerFileDoesNotExists(Exception):
+class ControllerFileDoesNotExist(Exception):
     pass
 
 
-class RouteDoesNotExists(Exception):
+class ControllerFileIsInvalid(Exception):
     pass
 
 
-class ViewDoesNotExists(Exception):
+class RouteDoesNotExist(Exception):
+    pass
+
+
+class ExistRouteIsInvalid(Exception):
+    pass
+
+
+class ViewDoesNotExist(Exception):
     pass
 
 
