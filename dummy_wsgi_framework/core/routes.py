@@ -51,5 +51,10 @@ def get_controller_by_uri_regexp(request_uri, app_config):
                 app_config.APP_NAME, request_uri)
         )
     if not os.path.exists(os.path.join(app_config.APP_CONTROLLERS_DIR, controller)):
-        raise ControllerFileDoesNotExist
+        raise ControllerFileDoesNotExist(
+            'Declared controller-file "%s" '
+            'of application "%s" does not found in directory "%s".' % (
+                controller, app_config.APP_NAME, app_config.APP_CONTROLLERS_DIR
+            )
+        )
     return controller, params
