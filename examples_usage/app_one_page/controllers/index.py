@@ -8,13 +8,24 @@ if dummy_wsgi_framework_module_path not in sys.path:
     sys.path.append(dummy_wsgi_framework_module_path)
 
 
-def controller_response(environ, start_response, app_config):
+def get_response(environ, start_response, app_config):
     if environ:
         pass  # Lets ignore PyCharm warning about not usage
     start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
+    response_template = """
+        <center>
+        {content}
+        </center>
+    """
+    content = "<br>".join(
+        [
+            "<b>Hello</b>, it is <b><a href='/'>'{app_name}'</a></b> application.",
+            "I am a start <i><u>INDEX-page</u></i>.",
+        ]
+    ).format(app_name=app_config.APP_NAME)
     return [
         bytes(
-            "<b>Привет. Я стартовая страница приложения \"%s\"." % app_config.APP_ROOT_DIR_NAME
+            response_template.format(content=content)
             , 'utf-8'
         )
     ]
