@@ -1,14 +1,44 @@
 #!/usr/bin/python3
-def controller_response(environ, start_response, app_config, message):
+def get_response(environ, start_response, app_config, message):
     if environ:
         pass  # Lets ignore not usage PyCharm
     start_response('404 Not found', [('Content-Type', 'text/html; charset=utf-8')])
     return [
         bytes(
             (
-                'Ошибка в приложении "%s"<br>'
-                '%s<br>'
-                '<a href="/">Перейти на стартовую страницу.</a>'
+                """
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>404 Error</title>
+                </head>
+                <body>
+                    <h1>
+                        <center>
+                            <font 
+                                color="green">In[0]:</font>
+                            <font 
+                                color="#8333ff">sum</font>([item*<font color="blue">10</font>**i 
+                            <font 
+                                color="orange">for</font>
+                            i<font color="orange">,</font> item <font color="orange">in</font> 
+                            <font color="#8333ff">enumerate</font>
+                            ([<font color="blue">2</font> ** <font color="blue">2</font><font color="orange">,</font> 
+                            <font
+                                color="blue">0</font> * <font color="blue">0</font> ** <font color="blue">0</font><font
+                                color="orange">,</font> <font
+                                color="blue">2</font> ** <font color="blue">2</font>])])
+                        </center>
+                    </h1>
+                    <center>
+                    <p>Application: %s</p>
+                    <p>Message: %s</p>
+                    <p>...go to <a href="/">start</a> page.</p>
+                    </center>
+                </body>
+                </html>
+                """
             ) % (
                 app_config.APP_NAME,
                 message,
