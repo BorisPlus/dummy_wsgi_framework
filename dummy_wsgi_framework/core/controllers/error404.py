@@ -32,8 +32,8 @@ def get_response(environ, start_response, app_config, message):
                         </center>
                     </h1>
                     <center>
-                    <p>Application: %s</p>
-                    <p>Message: %s</p>
+                    <p><b><u>Application</u></b>: <i>"%s"</i></p>
+                    <p><b><u>Message</u></b>: "%s"</p>
                     <p>...go to <a href="/">start</a> page.</p>
                     </center>
                 </body>
