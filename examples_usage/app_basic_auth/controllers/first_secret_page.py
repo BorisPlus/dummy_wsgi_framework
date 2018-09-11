@@ -9,7 +9,7 @@ if dummy_wsgi_framework_module_path not in sys.path:
     sys.path.append(dummy_wsgi_framework_module_path)
 
 
-def controller_response(environ, start_response, app_config):
+def get_response(environ, start_response, app_config):
     if environ:
         pass  # Lets ignore PyCharm warning about not usage
     if environ.get('HTTP_AUTHORIZATION', '').startswith('Basic '):
@@ -19,9 +19,10 @@ def controller_response(environ, start_response, app_config):
             start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
             return [
                 bytes(
-                    "Привет. <br>"
-                    "Я <a href='/index_1'><b>секретная стартовая</b></a> страница приложения \"%s\". <br>"
-                    "А тут <a href='/index_2'><b>вторая секретная</b></a> с другим пролем." % app_config.APP_ROOT_DIR_NAME
+                    "Hello. <br>"
+                    "I am <a href='/index_1'><b>first</b></a> secret page of application \"%s\". <br>"
+                    "There is <a href='/index_2'><b>second</b></a> secret page "
+                    "with differ password." % app_config.APP_NAME
                     , 'utf-8'
                 )
             ]
