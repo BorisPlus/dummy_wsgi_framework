@@ -2,7 +2,11 @@
 import sys
 import os
 import re
-from dummy_wsgi_framework.core.exceptions import ControllerFileDoesNotExist, RouteDoesNotExist, ExistRouteIsInvalid
+from dummy_wsgi_framework.core.exceptions import (
+    ControllerFileDoesNotExist,
+    RouteDoesNotExist,
+    ExistRouteIsInvalid
+)
 
 DEFAULT = '^/$'
 ERROR_404 = '^/error_404/$'
@@ -37,11 +41,12 @@ def get_controller_by_uri_regexp(request_uri, app_config):
         if isinstance(was_found, list) and len(was_found) == 1:
             if isinstance(was_found[0], str):
                 controller = uri_route_regexp.get('controller')
-            elif isinstance(was_found[0], tuple) and len(was_found[0]) > 1:
+            elif isinstance(was_found[0], tuple):
                 controller = uri_route_regexp.get('controller')
-                for param in was_found[0][1:]:
-                    k, v = param.split('=', 1)
-                    params[k] = v
+                if len(was_found[0]) > 1:
+                    for param in was_found[0][1:]:
+                        k, v = param.split('=', 1)
+                        params[k] = v
             else:
                 raise ExistRouteIsInvalid('Exist route does not valid, see route regexp examples')
             break
