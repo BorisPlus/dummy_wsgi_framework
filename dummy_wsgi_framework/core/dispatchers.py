@@ -37,8 +37,8 @@ def get_controller_response(environ, start_response, app_config):
         )
         if not hasattr(controller_module, 'get_response'):
             raise ControllerFileIsInvalid(
-                    'Controller function "get_response" is not declared '
-                    'in controller file "%s" of application "%s"' % (controller_file, app_config.APP_NAME))
+                    'Controller method "get_response" is not declared '
+                    'in controller-file "%s" of application "%s"' % (controller_file, app_config.APP_NAME))
         return controller_module.get_response(environ, start_response, app_config, **kwargs)
     except RouteDoesNotExist:
         return error404.get_response(
