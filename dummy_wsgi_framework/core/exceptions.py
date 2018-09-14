@@ -18,5 +18,9 @@ class ViewDoesNotExist(Exception):
     pass
 
 
+class ExistViewFileIsInvalid(Exception):
+    pass
+
+
 class BadTermUsage(Exception):
     pass
