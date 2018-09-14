@@ -18,5 +18,11 @@ routes_of_uri_regexps = [dict(uri_regexp='^/homework_rebuke/$',
                          dict(uri_regexp='^/controller_with_missing_method/$',
                               controller='controller_with_missing_method.py'),
                          dict(uri_regexp='^/controller_with_missing_view_file/$',
-                              controller='controller_with_missing_view_file.py')
+                              controller='controller_with_missing_view_file.py'),
+                         dict(uri_regexp='^/load_view_by_framework/$',
+                              controller='load_view_by_framework.py'),
+                         dict(uri_regexp='^/load_view_by_yourself/$',
+                              controller='load_view_by_yourself.py'),
+                         dict(uri_regexp='^/load_view_by_jinja2/$',
+                              controller='load_view_by_jinja2.py')
                          ] + list(base_routes_of_uri_regexps).copy()
