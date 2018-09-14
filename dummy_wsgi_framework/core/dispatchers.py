@@ -13,9 +13,13 @@ from dummy_wsgi_framework.core.exceptions import (
     ControllerFileIsInvalid,
     RouteDoesNotExist,
     ViewDoesNotExist,
-    BadTermUsage
+    BadTermUsage,
+    ExistViewFileIsInvalid
 )
-from dummy_wsgi_framework.core.controllers import error404, redirect
+from dummy_wsgi_framework.core.controllers import (
+    error404,
+    redirect
+)
 
 
 def resolve_name_by_python_file_name(file_name, template_of_name='%s'):
@@ -37,8 +41,8 @@ def get_controller_response(environ, start_response, app_config):
         )
         if not hasattr(controller_module, 'get_response'):
             raise ControllerFileIsInvalid(
-                    'Controller method "get_response" is not declared '
-                    'in controller-file "%s" of application "%s"' % (controller_file, app_config.APP_NAME))
+                'Controller method "get_response" is not declared '
+                'in controller-file "%s" of application "%s"' % (controller_file, app_config.APP_NAME))
         return controller_module.get_response(environ, start_response, app_config, **kwargs)
     except RouteDoesNotExist:
         return error404.get_response(
@@ -65,21 +69,24 @@ def get_controller_response(environ, start_response, app_config):
             environ, start_response, app_config,
             message='<b>ControllerFileIsInvalid:</b> %s' % sys.exc_info()[1]
         )
+    except ExistViewFileIsInvalid:
+        return error404.get_response(
+            environ, start_response, app_config,
+            message='<b>ExistViewFileIsInvalid:</b> %s' % sys.exc_info()[1]
+        )
     except:
         raise
 
 
-def get_view_response(environ, start_response, app_config, view_file_name):
-    if environ:
+def get_view_response(environ, start_response, app_config, view_file_name, **kwargs):
+    if environ or kwargs:
         pass  # Lets ignore PyCharm warning about not usage
     try:
         view_path = os.path.join(app_config.APP_VIEWS_DIR, view_file_name)
         with open(view_path, 'rb') as f:
-            start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
             response_body = f.read()
-            return [response_body]
-    except BadTermUsage:
-        raise
+        start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
+        return [response_body]
     except FileNotFoundError:
         raise ViewDoesNotExist(
             'Declared view-file "%s" '
@@ -87,3 +94,31 @@ def get_view_response(environ, start_response, app_config, view_file_name):
                 view_file_name, app_config.APP_NAME, app_config.APP_VIEWS_DIR
             )
         )
+
+
+def decorate_loaded_view_function_for_response(decorated_load_view_function):
+    def load_view_response(environ, start_response, app_config, view_file_name, **kwargs):
+        if environ or kwargs:
+            pass  # Lets ignore PyCharm warning about not usage
+        try:
+            view_path = os.path.join(app_config.APP_VIEWS_DIR, view_file_name)
+            response_body = decorated_load_view_function(view_path, **kwargs)
+            start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
+            return [response_body]
+        except FileNotFoundError:
+            raise ViewDoesNotExist(
+                'Declared view-file "%s" '
+                'of application "%s" does not found in directory "%s".' % (
+                    view_file_name, app_config.APP_NAME, app_config.APP_VIEWS_DIR
+                )
+            )
+
+    return load_view_response
+
+
+@decorate_loaded_view_function_for_response
+def load_view(view_path, **kwargs):
+    if kwargs:
+        pass  # Lets ignore PyCharm warning about not usage
+    with open(view_path, 'rb') as f:
+        return f.read()
