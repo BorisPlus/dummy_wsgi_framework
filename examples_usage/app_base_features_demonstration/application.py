@@ -7,7 +7,7 @@ if dummy_wsgi_framework_module_path not in sys.path:
     sys.path.append(dummy_wsgi_framework_module_path)
 
 from dummy_wsgi_framework.core.dispatchers import get_controller_response
-from examples_usage.app_features_demonstration import config as app_config
+from examples_usage.app_base_features_demonstration import config as app_config
 
 
 def application(environ, start_response):
