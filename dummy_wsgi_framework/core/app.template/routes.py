@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-path_info_routes = {
-    '/index/': 'index.py',
-    '/': 'index.py',
-}
+routes_of_uri_regexps = (
+    dict(uri_regexp=r'/index/', controller='index.py'),
+    dict(uri_regexp=r'/', controller='index.py'),
+)
