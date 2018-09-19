@@ -17,7 +17,7 @@
 
 * [Требования](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Требования)
 * [Установка](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-* [Руководство разработчика](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+* [Руководство разработчика](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Руководство-разработчика)
     * [Описание структуры приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-структуры-приложения)
         - [Конфигурация](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Конфигурация)
         * [Маршруты](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Маршруты)
