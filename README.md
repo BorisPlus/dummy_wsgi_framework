@@ -44,18 +44,19 @@
 
 Его установка возможна с использованием _**pip**_
 ```
-pip install dummy-wsgi-framework
+$ pip install dummy-wsgi-framework
 ```
 
-Или иным возможным образом, например:
+Или иным возможным образом, например (команда для OS Debian):
 ```
 $ cd <your_project_dir>
 $ git clone git://github.com/BorisPlus/dummy-wsgi-framework.git
 ```
-или, например, по ссылке для скачивания master-ветки проекта [Zip](https://github.com/BorisPlus/dummy-wsgi-framework/archive/master.zip)
+или, например, по ссылке для скачивания master-ветки проекта [Zip](https://github.com/BorisPlus/dummy-wsgi-framework/archive/master.zip) (команда для OS Debian):
 ```
 $ wget https://github.com/BorisPlus/dummy-wsgi-framework/archive/master.zip
 ```
+
 [↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление)
 
 ## Руководство разработчика
@@ -69,8 +70,8 @@ $ wget https://github.com/BorisPlus/dummy-wsgi-framework/archive/master.zip
 ```bash
 uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 ```
-[↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление)
 
+[↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление)
 
 ### Описание структуры приложения
      
