@@ -19,10 +19,10 @@
 * [Установка](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
 * [Руководство разработчика](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
     * [Описание структуры приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-структуры-приложения)
-        - [Конфигурация](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-        * [Маршруты](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-        * [Диспетчет контроллеров](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-        * [Контроллеры](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+        - [Конфигурация](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Конфигурация)
+        * [Маршруты](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Маршруты)
+        * [Диспетчер контроллеров](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Диспетчер-контроллеров)
+        * [Контроллеры](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Контроллеры)
         * [Представления](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Представления)
     * [Описание логики работы приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-логики-работы-приложения)
 * [Примеры](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Примеры)
@@ -104,7 +104,7 @@ routes_of_uri_regexps = tuple([
 
 Будте внимательны, срабатывает первый по порядку (сверху вниз) маршрут. Алгоритм сопоставления опирается на успех функции _re.compile(uri_regexp).findall(REQUEST_URI)_. Функционал регулярных выражений в uri_regexp был введен в ядро фреймворка для возможности назначения и использования в маршрутах параметров HTTP-запросов (['Демонстрация приложения с передачей и оработкой допущенных параметров'](https://github.com/BorisPlus/dummy-wsgi-framework/tree/master/examples_usage/app_get_allowed_params_from_route_link)).
 
-#### Диспетчет контроллеров
+#### Диспетчер контроллеров
 
 За направление HTTP-запросов к контроллерам в соответствии с маршрутами из **_routes.py_** отвечает функция _application_ - так называемый "диспетчер контроллеров" приложения, расположенный в **_application.py_** (файл называть не обязательно именно так). Этот файл выступает в качестве входной точки вашего WSGI-приложения.
 
