@@ -15,17 +15,16 @@
 
 ## Оглавление
 
-* [Как пользоваться](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Как-пользоваться)
-    * [Требования](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Требования)
-    * [Установка](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-    * [Руководство разработчика](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-        * [Описание структуры приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-структуры-приложения)
-            * [Конфигурация](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-            * [Маршруты](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-            * [Диспетчет контроллеров](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-            * [Контроллеры](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
-            * [Представления](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Представления)
-        * [Описание логики работы приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-логики-работы-приложения)
+* [Требования](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Требования)
+* [Установка](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+* [Руководство разработчика](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+    * [Описание структуры приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-структуры-приложения)
+        - [Конфигурация](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+        * [Маршруты](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+        * [Диспетчет контроллеров](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+        * [Контроллеры](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Установка)
+        * [Представления](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Представления)
+    * [Описание логики работы приложения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Описание-логики-работы-приложения)
 * [Примеры](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Примеры)
     * [Полный список примеров](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Полный-список-примеров)
     * [Пример _'Демонстрация базовых_возможностей фреймворка'_](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Демонстрация-базовых-возможностей-фреймворка)
@@ -35,13 +34,11 @@
 * [Дополнительные сведения](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Дополнительные-сведения)
 
 
-## Как пользоваться
-
-### Требования
+## Требования
 
 Не имеет. 
 
-### Установка
+## Установка
 
 **_Dummy WSGI Framework_** включен в реест пакетов PyPI (Python Package Index) - https://pypi.org/project/dummy-wsgi-framework/
 
@@ -60,7 +57,7 @@ $ git clone git://github.com/BorisPlus/dummy-wsgi-framework.git
 $ wget https://github.com/BorisPlus/dummy-wsgi-framework/archive/master.zip
 ```
 
-### Руководство разработчика
+## Руководство разработчика
 
 Директория **_dummy_wsgi_framework_** - это и есть фреймворк с функциональным ядром в директории **_dummy_wsgi_framework/core_** и примером базового одностраничного приложения в директории **_dummy_wsgi_framework/app.template_**.
 
@@ -72,13 +69,13 @@ $ wget https://github.com/BorisPlus/dummy-wsgi-framework/archive/master.zip
 uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 ```
 
-#### Описание структуры приложения
+### Описание структуры приложения
      
-##### Конфигурация
+#### Конфигурация
 
 Файл **_config.py_** вашего приложения содержит конфигурационные переменные, и предпочтительно без должного опыта не изменять существующие их значения (хотя это возможно, см. [конфигурацию](https://github.com/BorisPlus/dummy-wsgi-framework/blob/master/examples_usage/app_test_other_dirs/config.py) примера ['Демонстрация с переопределением путей хранения файлов контроллеров и представлений'](https://github.com/BorisPlus/dummy-wsgi-framework/blob/master/examples_usage/app_one_page_other_dirs)) и добавлять свои конфигурационные переменные именно сюда.
     
-##### Маршруты
+#### Маршруты
 
 Файл **_routes.py_** приложения содержит соответствие HTTP-запросов и контроллелов приложения - так называемые "маршруты".
 
@@ -107,7 +104,7 @@ routes_of_uri_regexps = tuple([
 
 Будте внимательны, срабатывает первый по порядку (сверху вниз) маршрут. Алгоритм сопоставления опирается на успех функции _re.compile(uri_regexp).findall(REQUEST_URI)_. Функционал регулярных выражений в uri_regexp был введен в ядро фреймворка для возможности назначения и использования в маршрутах параметров HTTP-запросов (['Демонстрация приложения с передачей и оработкой допущенных параметров'](https://github.com/BorisPlus/dummy-wsgi-framework/tree/master/examples_usage/app_get_allowed_params_from_route_link)).
 
-##### Диспетчет контроллеров
+#### Диспетчет контроллеров
 
 За направление HTTP-запросов к контроллерам в соответствии с маршрутами из **_routes.py_** отвечает функция _application_ - так называемый "диспетчер контроллеров" приложения, расположенный в **_application.py_** (файл называть не обязательно именно так). Этот файл выступает в качестве входной точки вашего WSGI-приложения.
 
@@ -126,7 +123,7 @@ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 ```
 Таким образом у Вас есть возможность создать несколько приложений, запуская их на разных портах сервера. 
     
-##### Контроллеры
+#### Контроллеры
 
 Создайте свои контроллеры, реализовав их бизнес-логику (можно взять типовые с подгрузкой шаблонов и без, или реализовать свои с посылкой специальных HTTP-заголовков, например, для _Basic Access Authentication_ как в примере ['Демонстрация приложения с двумя секретными страницами (Basic Auth)'](https://github.com/BorisPlus/dummy-wsgi-framework/tree/master/examples_usage/app_basic_auth)). 
 
@@ -152,7 +149,7 @@ def get_response(environ, start_response, app_config, message):
     ]
 ```
 
-##### Представления
+#### Представления
 
 Контроллеры могут непосредственно овечать на HTTP-запрос или же загружать заранее подготовленные в приложении файлы представлений, иногда их называют "шаблоны".
 
