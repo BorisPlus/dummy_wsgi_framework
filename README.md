@@ -385,14 +385,14 @@ routes_of_uri_regexps = (
 * сформировать пары из параметров и их шаблонных типов значений, например, "id=id_value_type", "hex=hex_value_type", "word=word_value_type"
 * заключить пары в скобки и сконкатенировать их, используя "&", например, "(id=id_value_type)**&**(hex=hex_value_type)**&**(word=word_value_type)"
 * сконкатенировать полученное с корневым HTTP-путем, используя "\\?", например, "/path/info/**\\?**(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)"
-* поставить в конце знак косой черты "/", например, "/path/info/\?(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)**/**"
-* заключить в круглые скобки, например, "**(**/path/info/\?(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)/**)**"
-* поставить знаки начала "^" и конца "$" регулярного выражения, например, "**^**(/path/info/\?(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)/)**$**"
+* поставить в конце знак косой черты "/", например, "/path/info/\\?(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)**/**"
+* заключить в круглые скобки, например, "**(**/path/info/\\?(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)/**)**"
+* поставить знаки начала "^" и конца "$" регулярного выражения, например, "**^**(/path/info/\\?(id=id_value_type)&(hex=hex_value_type)&(word=word_value_type)/)**$**"
 * заменить шаблонные типы значений на их шаблоны в нотации регулярных выражений, например:
     * для "id_value_type" - "[0-9]*"
     * для "hex_value_type" - "[0-9A-Fa-f]*"
     * для "word_value_type" - "[0-9A-Za-z_]*" или "\w*"
-* как итог в _**uri_regexp**_ внести "^(/path/info/\?(id=[0-9]*)&(hex=[0-9A-Fa-f]*)&(word=[0-9A-Za-z_]*)/)$"
+* как итог в _**uri_regexp**_ внести "^(/path/info/\\?(id=[0-9]\*)&(hex=[0-9A-Fa-f]\*)&(word=[0-9A-Za-z_]*)/)$"
     
 В текущем примере контроллер _list_ генерирует представление со списком ссылок, где указаны шестнадцатиричные значения в верхнем регистре и их id, присвоенные им в порядке их генерации.
 
