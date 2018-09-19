@@ -311,7 +311,7 @@ def get_response(environ, start_response, app_config):
 
 [↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление-текущего-описания)
 
-### Пример _'Приложение с двумя секретными страницами (Basic Auth)'_
+### Пример _'Приложение с двумя секретными страницами (Basic access authentication)'_
 
 Когда выше говорилось, что **_Dummy WSGI Framework_** расширяем в силу открытого доступа к WSGI-интерфейсу на уровне контроллеров приложения, то имелось в виду, что у разработчика приложения существует возможность посылать заголовки и иную служебную информацию непосредственно в контроллерах своего приложения, разработанного на основе **_Dummy WSGI Framework_**. Тому может служить пример ["Приложение с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes/examples_usage/app_basic_auth)
 
