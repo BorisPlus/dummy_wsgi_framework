@@ -44,20 +44,20 @@
 Его установка возможна с использованием _**pip**_
 
 ```bash
-$ pip install dummy-wsgi-framework
+$ pip install dummy_wsgi_framework
 ```
 
 Или иным возможным образом, например (команда для OS Debian):
 
 ```bash
 $ cd <your_project_dir>
-$ git clone git://github.com/BorisPlus/dummy-wsgi-framework.git
+$ git clone git://github.com/BorisPlus/dummy_wsgi_framework.git
 ```
 
 или, например, по ссылке для скачивания master-ветки проекта [Zip](https://github.com/BorisPlus/otus_webpython_003/archive/master.zip) (команда для OS Debian):
 
 ```bash
-$ wget https://github.com/BorisPlus/otus_webpython_003/archive/master.zip
+$ wget https://github.com/BorisPlus/dummy_wsgi_framework/archive/master.zip
 ```
 
 [↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление-текущего-описания)
