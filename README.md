@@ -15,23 +15,23 @@
 
 ## Оглавление текущего описания
 
-* [Требования](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Требования)
-* [Установка](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Установка)
-* [Руководство разработчика](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Руководство-разработчика)
-    * [Описание структуры приложения](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Описание-структуры-приложения)
-        * [Конфигурация](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Конфигурация)
-        * [Маршруты](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Маршруты)
-        * [Диспетчер контроллеров](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Диспетчер-контроллеров)
-        * [Контроллеры](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Контроллеры)
-        * [Представления](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Представления)
-    * [Описание логики работы приложения](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Описание-логики-работы-приложения)
-* [Примеры](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Примеры)
-    * [Полный список примеров](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Полный-список-примеров)
-    * [Пример _'Демонстрация базовых возможностей фреймворка'_](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Пример-Демонстрация-базовых-возможностей-фреймворка)
-    * [Пример _'Приложение с двумя секретными страницами (Basic access authentication)'_](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Пример-Приложение-с-двумя-секретными-страницами-basic-access-authentication)
-    * [Пример _'Приложение с оработкой допущенных параметров'_](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Пример-Приложение-с-оработкой-допущенных-параметров)
-* [Лицензия](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Лицензия)
-* [Дополнительные сведения](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Дополнительные-сведения)
+* [Требования](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Требования)
+* [Установка](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Установка)
+* [Руководство разработчика](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Руководство-разработчика)
+    * [Описание структуры приложения](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Описание-структуры-приложения)
+        * [Конфигурация](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Конфигурация)
+        * [Маршруты](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Маршруты)
+        * [Диспетчер контроллеров](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Диспетчер-контроллеров)
+        * [Контроллеры](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Контроллеры)
+        * [Представления](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Представления)
+    * [Описание логики работы приложения](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Описание-логики-работы-приложения)
+* [Примеры](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Примеры)
+    * [Полный список примеров](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Полный-список-примеров)
+    * [Пример _'Демонстрация базовых возможностей фреймворка'_](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Пример-Демонстрация-базовых-возможностей-фреймворка)
+    * [Пример _'Приложение с двумя секретными страницами (Basic access authentication)'_](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Пример-Приложение-с-двумя-секретными-страницами-basic-access-authentication)
+    * [Пример _'Приложение с оработкой допущенных параметров'_](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Пример-Приложение-с-оработкой-допущенных-параметров)
+* [Лицензия](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Лицензия)
+* [Дополнительные сведения](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Дополнительные-сведения)
 
 ## Требования
 
@@ -60,7 +60,7 @@ $ git clone git://github.com/BorisPlus/dummy_wsgi_framework.git
 $ wget https://github.com/BorisPlus/dummy_wsgi_framework/archive/master.zip
 ```
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ## Руководство разработчика
 
@@ -75,15 +75,15 @@ $ wget https://github.com/BorisPlus/dummy_wsgi_framework/archive/master.zip
 $ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 ```
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ### Описание структуры приложения
      
 #### Конфигурация
 
-Файл **_config.py_** вашего приложения содержит конфигурационные переменные, и предпочтительно, без должного опыта, не изменять существующие их значения (хотя это возможно, см. [конфигурацию](https://github.com/BorisPlus/dummy_wsgi_framework/blob/regexp_routes/examples_usage/app_test_other_dirs/config.py) примера ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/blob/regexp_routes/examples_usage/app_one_page_other_dirs)) и добавлять свои конфигурационные переменные именно сюда.
+Файл **_config.py_** вашего приложения содержит конфигурационные переменные, и предпочтительно, без должного опыта, не изменять существующие их значения (хотя это возможно, см. [конфигурацию](https://github.com/BorisPlus/dummy_wsgi_framework/blob/master/examples_usage/app_test_other_dirs/config.py) примера ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/blob/master/examples_usage/app_one_page_other_dirs)) и добавлять свои конфигурационные переменные именно сюда.
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
     
 #### Маршруты
 
@@ -114,9 +114,9 @@ routes_of_uri_regexps = tuple([
 * значение ключа _uri_regexp_ - это _REQUEST_URI_, последующая после доменного имени или IP-адреса часть HTTP-запроса. Знак косой черты "/" в конце _uri_regexp_ обязателен, так как диспетчер контроллеров через функционал ядра фреймворка контролирует маршруты HTTP-запросов, и если в конце _REQUEST_URI_ знак косой черты "/" отсутствует, то происходит редирект (перенаправление HTTP-запроса) на _REQUEST_URI_ с приписанной в конец косой чертой "/".
 * значение ключа _controller_ - это сам Python-файл контроллера, соответствующего _uri_regexp_ и реализующего логику реакции на HTTP-запрос. 
 
-Будте внимательны, срабатывает первый по порядку (сверху вниз) маршрут. Алгоритм сопоставления опирается на успех функции _re.compile(uri_regexp).findall(REQUEST_URI)_. Функционал регулярных выражений в uri_regexp был введен в ядро фреймворка для возможности назначения и использования в маршрутах именованных параметров HTTP-запросов (["Приложение с оработкой допущенных параметров"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_get_allowed_params_from_route_link)).
+Будте внимательны, срабатывает первый по порядку (сверху вниз) маршрут. Алгоритм сопоставления опирается на успех функции _re.compile(uri_regexp).findall(REQUEST_URI)_. Функционал регулярных выражений в uri_regexp был введен в ядро фреймворка для возможности назначения и использования в маршрутах именованных параметров HTTP-запросов (["Приложение с оработкой допущенных параметров"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_get_allowed_params_from_route_link)).
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 #### Диспетчер контроллеров
 
@@ -139,15 +139,15 @@ $ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 
 Таким образом у Вас есть возможность создать на основе **_Dummy WSGI Framework_** несколько отдельных приложений, запуская их на разных портах сервера. 
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
     
 #### Контроллеры
 
 "Контроллеры" это Python-файлы, реализующие логику реакции на HTTP-запросы в соответствии с объявленными маршрутами.
 
-Создайте свои контроллеры, реализовав их логику работы (можно взять типовые с подгрузкой шаблонов и без, или реализовать свои с посылкой специальных HTTP-заголовков, например, для _Basic Access Authentication_ как в примере ["Приложения с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_basic_auth)). 
+Создайте свои контроллеры, реализовав их логику работы (можно взять типовые с подгрузкой шаблонов и без, или реализовать свои с посылкой специальных HTTP-заголовков, например, для _Basic Access Authentication_ как в примере ["Приложения с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_basic_auth)). 
 
-Контроллеры размещаются в директории _controllers_ в корневой директории приложения (что не обязательно, так как в **_config.py_** можно переопределить базовое расположение файлов контроллеров, см. конфигурацию примера ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/blob/regexp_routes/examples_usage/app_one_page_other_dirs/config.py)).
+Контроллеры размещаются в директории _controllers_ в корневой директории приложения (что не обязательно, так как в **_config.py_** можно переопределить базовое расположение файлов контроллеров, см. конфигурацию примера ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/blob/master/examples_usage/app_one_page_other_dirs/config.py)).
 
 Основным методом в программном протоколе вызова контроллера приложения является функция **_get_response()_**. Обязательно реализуйте ее, иначе диспетчер контроллеров не сможет вызвать соответствующий контроллер, и будет сгененрировано исключение _ControllerFileIsInvalid_ с указанием отсутствия у контроллера функции **_get_response()_**
 
@@ -170,40 +170,40 @@ def get_response(environ, start_response, app_config, message):
     ]
 ```
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 #### Представления
 
 Контроллеры могут непосредственно овечать на HTTP-запрос или же загружать заранее подготовленные в приложении файлы представлений, иногда их так же называют "шаблоны".
 
-Python-файлы представлений размещаются в директории _views_ в корневой директории приложения (что не обязательно, так как в **_config.py_** можно переопределить базовое расположение файлов представлений, см. конфигурацию примера ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/blob/regexp_routes/examples_usage/app_one_page_other_dirs/config.py)).
+Python-файлы представлений размещаются в директории _views_ в корневой директории приложения (что не обязательно, так как в **_config.py_** можно переопределить базовое расположение файлов представлений, см. конфигурацию примера ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/blob/master/examples_usage/app_one_page_other_dirs/config.py)).
 
-Подробное описание реализации загрузки контроллером файла представления приведено [здесь](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#decorate_loaded_view_function_for_response) в примере ["Демонстрация базовых_возможностей фреймворка"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_base_features_demonstration).
+Подробное описание реализации загрузки контроллером файла представления приведено [здесь](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#decorate_loaded_view_function_for_response) в примере ["Демонстрация базовых_возможностей фреймворка"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_base_features_demonstration).
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ### Описание логики работы приложения
     
 Точка входа вашего приложения (_**app/application.py:** def application()..._), передаст полученные аргументы базовому диспетчеру контроллеров (_**core/dispatchers.py:** def get_controller_response()..._) вместе с отсылкой на конфигурационные данные текущего приложения. Базовый диспетчер контроллеров в соответствии с переданным ему _REQUEST_URI_ по имеющимя данным в маршрутах текущего приложения (_**app/routes.py:** routes_of_uri_regexps_) вызовет по успеху (_**core/routes.py:** def get_controller_by_uri_regexp()..._) соответствующий данному маршруту контроллер (_**app/controllers/ACTION.py:** def get_response()), который в свою очередь ответит представлением по "зашитому" в него функционалу или передаст (если вы так реализуете) полученные им параметры дальше методу (_**core/dispatchers.py:** def load_view()..._), который "загрузит" файл вашего представления (_app/views/ACTION.html_).
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
    
 ## Примеры
 
 ### Полный список примеров
 
 Примеры разработанных на основе **Dummy WSGI Framework** приложений:
-* ["Одностраничное приложение"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_one_page)
-* ["Демонстрация базовых_возможностей фреймворка"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_base_features_demonstration)
-* ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_one_page_other_dirs)
-* ["Приложение с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_basic_auth)
-* ["Приложение с оработкой допущенных параметров"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_get_allowed_params_from_route_link)
+* ["Одностраничное приложение"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_one_page)
+* ["Демонстрация базовых_возможностей фреймворка"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_base_features_demonstration)
+* ["Приложение с переопределенными путями хранения файлов контроллеров и представлений"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_one_page_other_dirs)
+* ["Приложение с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_basic_auth)
+* ["Приложение с оработкой допущенных параметров"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_get_allowed_params_from_route_link)
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ### Пример _"Демонстрация базовых возможностей фреймворка"_
 
-Пример ["Демонстрация базовых_возможностей фреймворка"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_base_features_demonstration) содержит демонстрационный вариант Веб-приложения, а именно:
+Пример ["Демонстрация базовых_возможностей фреймворка"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_base_features_demonstration) содержит демонстрационный вариант Веб-приложения, а именно:
 * реализацию вызова контроллера без представления;
 * реализацию вызова контроллера с загрузкой представления из HTML-файла;
 * демонстрацию штатного отлова на уровне ядра фреймворка исключения RouteDoesNotExist, возникающего при заведомо отсутствующем маршруте, удовлетворяющего пришедшему HTTP-запросу;
@@ -314,11 +314,11 @@ def get_response(environ, start_response, app_config):
 
 Рекомендую выносить функции, подобные _load_jinja2_view_template()_, в разрабатываемом приложении в отдельный файл, например, как здесь - _user_def.py_, так как это представляется методологически верным для повторного использования функций, подобных _load_jinja2_view_template()_, например, для использования _load_jinja2_view_template()_ в других контроллерах.
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ### Пример _'Приложение с двумя секретными страницами (Basic access authentication)'_
 
-Когда выше говорилось, что **_Dummy WSGI Framework_** расширяем в силу открытого доступа к WSGI-интерфейсу на уровне контроллеров приложения, то имелось в виду, что у разработчика существует возможность организовать посыл HTTP-заголовков и иной служебной информации непосредственно в контроллерах своего приложения, разработанного на основе **_Dummy WSGI Framework_**. Тому может служить пример ["Приложение с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_basic_auth)
+Когда выше говорилось, что **_Dummy WSGI Framework_** расширяем в силу открытого доступа к WSGI-интерфейсу на уровне контроллеров приложения, то имелось в виду, что у разработчика существует возможность организовать посыл HTTP-заголовков и иной служебной информации непосредственно в контроллерах своего приложения, разработанного на основе **_Dummy WSGI Framework_**. Тому может служить пример ["Приложение с двумя секретными страницами (Basic access authentication)"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_basic_auth)
 
 ```text
 Замечание о протоколе запроса логина и пароля:
@@ -369,11 +369,11 @@ def get_response(environ, start_response, app_config):
 
 А на "второй секретной" странице может быть совершенно другие "login:password", например, "admin:admin".
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ### Пример _'Приложение с оработкой допущенных параметров'_
 
-С целью возможной необходимости использования вами в вашем приложении параметров HTTP-запросов был реализован механизм назначения именнованных параметров (в нотации "name=value") для маршрута, допустимых в HTTP-запросе и необходимых для его контроллера, с последующей их "передачей" дальше в представление (в той же нотации "name=value"). Это продемонстировано в примере ["Приложения с оработкой допущенных параметров"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes/examples_usage/app_get_allowed_params_from_route_link)
+С целью возможной необходимости использования вами в вашем приложении параметров HTTP-запросов был реализован механизм назначения именнованных параметров (в нотации "name=value") для маршрута, допустимых в HTTP-запросе и необходимых для его контроллера, с последующей их "передачей" дальше в представление (в той же нотации "name=value"). Это продемонстировано в примере ["Приложения с оработкой допущенных параметров"](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master/examples_usage/app_get_allowed_params_from_route_link)
 
 Ключевым моментом для использования параметров является правильное написание регулярного выражения в соответствующем _**uri_regexp**_.
 
@@ -404,13 +404,13 @@ routes_of_uri_regexps = (
 
 А контроллер _view_ отображает переданные в HTTP-запросе id и шестнадцатиричное значение в верхнем регистре . Можете проверить (или поверить), наличие необходимых параметров с недопустимыми значениями, даже шестнадчатиричными в нижнем регистре, а также отсутствие необходимых параметров или наличие иных параметров приведут в вызову исключения _RouteDoesNotExist_, ведь действительно нет маршрута удовлетворяющего подобному _uri_regexp_.
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ## Лицензия
 
 Вы можете свободно испольтзовать **_Dummy WSGI Framework_** в качестве каркаса для своих Веб-приложений или основы для своего Веб-фреймворка. Ссылаться на факт использования Вами **_Dummy WSGI Framework_** не обязательно, но мне бы хотелось иметь публичный отзыв, даже если он и не положительный.
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
 
 ## Дополнительные сведения
 
@@ -422,4 +422,4 @@ routes_of_uri_regexps = (
 
 Теперь, надеюсь, и Вам кажется, что **Dummy WSGI Framework** не так уж "прост" и "глуп". 
 
-[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/regexp_routes#Оглавление-текущего-описания)
+[↑ наверх в оглавление](https://github.com/BorisPlus/dummy_wsgi_framework/tree/master#Оглавление-текущего-описания)
