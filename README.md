@@ -35,28 +35,28 @@
 
 ## Требования
 
-Использует версию Python>=3.4 
-
-```
-pip3 install -r requirements.txt
-```
+Использует версию Python 3.4 
 
 ## Установка
 
 **_Dummy WSGI Framework_** включен в реест пакетов PyPI (Python Package Index) - https://pypi.org/project/otus_webpython_003/
 
 Его установка возможна с использованием _**pip**_
-```
+
+```bash
 $ pip install dummy-wsgi-framework
 ```
 
 Или иным возможным образом, например (команда для OS Debian):
-```
+
+```bash
 $ cd <your_project_dir>
 $ git clone git://github.com/BorisPlus/dummy-wsgi-framework.git
 ```
+
 или, например, по ссылке для скачивания master-ветки проекта [Zip](https://github.com/BorisPlus/otus_webpython_003/archive/master.zip) (команда для OS Debian):
-```
+
+```bash
 $ wget https://github.com/BorisPlus/otus_webpython_003/archive/master.zip
 ```
 
@@ -70,8 +70,9 @@ $ wget https://github.com/BorisPlus/otus_webpython_003/archive/master.zip
 1. Создайте директорию вашего приложения **_app_** (где угодно).
 2. Cкопируйте в директорию **_app_** содержимое директории **_dummy_wsgi_framework/app.template_**.
 3. Запустите приложение:
+
 ```bash
-uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
+$ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 ```
 
 [↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление-текущего-описания)
@@ -89,6 +90,7 @@ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 Файл **_routes.py_** приложения содержит так называемые "маршруты" - соответствие HTTP-запросов (на самом деле их масок) и контроллелов приложения.
 
 Маршруты задаются в виде:
+
 ```python
 routes_of_uri_regexps = (
     dict(uri_regexp='/index/', controller='index.py'),
@@ -96,9 +98,9 @@ routes_of_uri_regexps = (
 )
 ```
 или с подгрузкой базовых маршрутов фреймворка:
+
 ```python
 from dummy_wsgi_framework.core.routes import base_routes_of_uri_regexps
-
 
 routes_of_uri_regexps = tuple([
     dict(uri_regexp='^/page_one/$',
@@ -107,6 +109,7 @@ routes_of_uri_regexps = tuple([
          controller='page_two.py')
     ] + list(base_routes_of_uri_regexps).copy())
 ```
+
 , где:
 * значение ключа _uri_regexp_ - это _REQUEST_URI_, последующая после доменного имени или IP-адреса часть HTTP-запроса. Знак косой черты "/" в конце _uri_regexp_ обязателен, так как диспетчер контроллеров через функционал ядра фреймворка контролирует маршруты HTTP-запросов, и если в конце _REQUEST_URI_ знак косой черты "/" отсутствует, то происходит редирект (перенаправление HTTP-запроса) на _REQUEST_URI_ с приписанной в конец косой чертой "/".
 * значение ключа _controller_ - это сам Python-файл контроллера, соответствующего _uri_regexp_ и реализующего логику реакции на HTTP-запрос. 
@@ -127,11 +130,13 @@ from dummy_wsgi_framework.core.dispatchers import get_controller_response
 def application(environ, start_response):
     return get_controller_response(environ, start_response, app_config)
 ```
+
 В итоге приложение запускается так:
 
 ```bash
-uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
+$ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 ```
+
 Таким образом у Вас есть возможность создать на основе **_Dummy WSGI Framework_** несколько отдельных приложений, запуская их на разных портах сервера. 
 
 [↑ наверх в оглавление](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes#Оглавление-текущего-описания)
@@ -147,6 +152,7 @@ uwsgi --http 127.0.0.1:8080 --wsgi-file /<absolute_path>/app/application.py
 Основным методом в программном протоколе вызова контроллера приложения является функция **_get_response()_**. Обязательно реализуйте ее, иначе диспетчер контроллеров не сможет вызвать соответствующий контроллер, и будет сгененрировано исключение _ControllerFileIsInvalid_ с указанием отсутствия у контроллера функции **_get_response()_**
 
 Контроллеры "редиректа" и "404-ой ошибки" реализованы в ядре фреймворка:
+
 ```python
 # File: core/controllers/redirect.py
 def get_response(environ, start_response, app_config, location):
@@ -215,10 +221,10 @@ Python-файлы представлений размещаются в дире�
 Декоратор **_@decorate_loaded_view_function_for_response_** производит проверку существования файла представления и передает функции обработки этого файла полученные ею аргументы.
 
 То есть для загрузки файла представления "как есть", реализованной в ядре фреймворка, предполагается вызов в контроллере функции **_load_view()_** ядра фреймворка:
+
 ```python
 # Framework solution
 from dummy_wsgi_framework.core.dispatchers import load_view
-
 
 def get_response(environ, start_response, app_config):
     return load_view(
@@ -245,7 +251,6 @@ def get_response(environ, start_response, app_config):
 # Your self realization
 from dummy_wsgi_framework.core.dispatchers import decorate_loaded_view_function_for_response
 
-
 @decorate_loaded_view_function_for_response
 def yourself_load_view_function(view_path, **kwargs):
     with open(view_path, 'rb') as f:
@@ -257,7 +262,6 @@ def yourself_load_view_function(view_path, **kwargs):
             )
     return response_body
 
-
 def get_response(environ, start_response, app_config):
     return yourself_load_view_function(
         environ,
@@ -268,7 +272,6 @@ def get_response(environ, start_response, app_config):
         value=2,            # будут участвовать в замене в response_body.replace
         other=4
     )
-
 ```
 
 Для использования шаблонизаторов, например, Jinja2, вышеописанный код может выглядеть так:
@@ -286,7 +289,6 @@ import config
 import jinja2
 import os
 
-
 @decorate_loaded_view_function_for_response
 def load_jinja2_view_template(view_template_path, **kwargs):
     try:
@@ -297,7 +299,6 @@ def load_jinja2_view_template(view_template_path, **kwargs):
         raise ExistViewFileIsInvalid('File "%s" - %s' % (view_template_path, e.message))
     except jinja2.exceptions.TemplateNotFound as e:
         raise ViewDoesNotExist('File "%s" not found %s' % (view_template_path, e.message))
-
 
 def get_response(environ, start_response, app_config):
     return load_jinja2_view_template(
@@ -333,6 +334,7 @@ def get_response(environ, start_response, app_config):
 ```
 
 Пусть маршруты будут таковы:
+
 ```python
 routes_of_uri_regexps = (
     dict(uri_regexp=r'^/index_1/$', controller='first_secret_page.py'),
@@ -342,6 +344,7 @@ routes_of_uri_regexps = (
 ```
 
 Контроллер:
+
 ```python
 # Content of 'first_secret_page.py'
 import base64
@@ -371,7 +374,6 @@ def get_response(environ, start_response, app_config):
 ### Пример _'Приложение с оработкой допущенных параметров'_
 
 С целью возможной необходимости использования вами в вашем приложении параметров HTTP-запросов был реализован механизм назначения именнованных параметров (в нотации "name=value") для маршрута, допустимых в HTTP-запросе и необходимых для его контроллера, с последующей их "передачей" дальше в представление (в той же нотации "name=value"). Это продемонстировано в примере ["Приложения с оработкой допущенных параметров"](https://github.com/BorisPlus/otus_webpython_003/tree/regexp_routes/examples_usage/app_get_allowed_params_from_route_link)
-
 
 Ключевым моментом для использования параметров является правильное написание регулярного выражения в соответствующем _**uri_regexp**_.
 
