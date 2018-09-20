@@ -1,13 +1,4 @@
 #!/usr/bin/python3
-import os
-import sys
-
-dummy_wsgi_framework_module_path = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-if dummy_wsgi_framework_module_path not in sys.path:
-    sys.path.append(dummy_wsgi_framework_module_path)
-
-
 def get_response(environ, start_response, app_config):
     if environ:
         pass  # Lets ignore PyCharm warning about not usage
@@ -25,7 +16,6 @@ def get_response(environ, start_response, app_config):
     ).format(app_name=app_config.APP_NAME)
     return [
         bytes(
-            response_template.format(content=content)
-            , 'utf-8'
+            response_template.format(content=content), 'utf-8'
         )
     ]
