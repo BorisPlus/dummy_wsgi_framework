@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Realization with Jinja2
 from examples_usage.app_base_features_demonstration.user_def import load_jinja2_view_template as load_view
 

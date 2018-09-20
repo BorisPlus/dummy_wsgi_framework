@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Your self realization
 from dummy_wsgi_framework.core.dispatchers import decorate_loaded_view_function_for_response
 

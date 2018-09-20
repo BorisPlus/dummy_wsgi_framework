@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from dummy_wsgi_framework.core.dispatchers import get_view_response
 
 

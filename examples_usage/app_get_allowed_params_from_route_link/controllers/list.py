@@ -1,12 +1,5 @@
 #!/usr/bin/python3
-import os
-import sys
 import random
-
-dummy_wsgi_framework_module_path = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-if dummy_wsgi_framework_module_path not in sys.path:
-    sys.path.append(dummy_wsgi_framework_module_path)
 
 
 def random_hex_string_generator(size=6, chars='0123456789ABCDEF'):
@@ -14,7 +7,7 @@ def random_hex_string_generator(size=6, chars='0123456789ABCDEF'):
 
 
 def get_response(environ, start_response, app_config, **kwargs):
-    if environ:
+    if environ or kwargs:
         pass  # Lets ignore PyCharm warning about not usage
     start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
     random_dict = {i: random_hex_string_generator() for i in range(30)}

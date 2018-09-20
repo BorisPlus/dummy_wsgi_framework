@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Framework solution
 from dummy_wsgi_framework.core.dispatchers import load_view
 

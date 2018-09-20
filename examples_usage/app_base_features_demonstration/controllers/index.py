@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 def get_response(environ, start_response, app_config):
     if environ:
         pass  # Lets ignore PyCharm warning about not usage

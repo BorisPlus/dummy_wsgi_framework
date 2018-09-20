@@ -1,6 +1,9 @@
 from dummy_wsgi_framework.core.dispatchers import decorate_loaded_view_function_for_response
-from dummy_wsgi_framework.core.exceptions import ExistViewFileIsInvalid, ViewDoesNotExist
-from examples_usage.app_base_features_demonstration import config
+from dummy_wsgi_framework.core.exceptions import (
+    ExistViewFileIsInvalid,
+    ViewDoesNotExist
+)
+import config
 import jinja2
 import os
 
