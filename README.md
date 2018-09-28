@@ -44,7 +44,7 @@
 Его установка возможна с использованием _**pip**_
 
 ```bash
-$ pip install dummy-wsgi-framework
+$ pip install dummy_wsgi_framework
 ```
 
 Или иным возможным образом, например (команда для OS Debian):
